@@ -33,7 +33,8 @@ public class Utilisateur implements Serializable {
     @Column(name = "couleur")
     private String couleur;
 
-    @OneToOne    @JoinColumn(unique = true)
+    @OneToOne    
+    @JoinColumn(unique = true)
     private Jeu jeu;
 
     @ManyToOne
