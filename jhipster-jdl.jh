@@ -1,0 +1,35 @@
+entity Utilisateur {
+	Pseudo String,
+	Points Integer,
+    Credit Integer,
+    Couleur String,
+}
+
+
+entity Plateau {
+	Nom String,
+    Valeur Integer,
+}
+
+entity Jeu {
+		
+}
+
+entity De {
+	valeur Integer
+}
+
+relationship ManyToOne {
+Utilisateur to Plateau
+
+}
+
+relationship OneToMany{
+Jeu to De
+}
+
+relationship OneToOne {
+Utilisateur to Jeu,
+
+}
+

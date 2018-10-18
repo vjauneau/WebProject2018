@@ -1,0 +1,38 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "fr.istia.perudo",
+      "nativeLanguage": "fr"
+    },
+    "jhipsterVersion": "5.5.0",
+    "applicationType": "monolith",
+    "baseName": "PerudoOnline",
+    "packageName": "fr.istia.perudo",
+    "packageFolder": "fr/istia/perudo",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "OGZkZDA3ZjFiNzhmNjYxMWU0ZjkwMzk5ZDRjMDEwMmVjY2IwYWYxODMxMzk3ZWZlZDRmYjI4NWZiYmNkZGY5NmM1MGY2ZTFiYWQxNjE4YjM0OTIzZTM0ZDc4MGQ5NTI4YTU5MWE4YTIyYjRjM2M5NTUwYzNlNjBjZDNmOTMwNDM=",
+    "clientFramework": "react",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "fr",
+    "languages": [
+      "fr",
+      "en"
+    ]
+  }
+}

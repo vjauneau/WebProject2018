@@ -1,0 +1,23 @@
+
+{
+    "perudoOnlineApp": {
+        "de" : {
+            "home": {
+                "title": "Des",
+                "createLabel": "Créer un nouveau De",
+                "createOrEditLabel": "Créer ou éditer un De"
+            },
+            "created": "Un nouveau De a été créé avec l'identifiant {{ param }}",
+            "updated": "Le De avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le De avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le De {{ id }} ?"
+            },
+            "detail": {
+                "title": "De"
+            },
+            "valeur": "Valeur",
+            "jeu": "Jeu"
+        }
+    }
+}

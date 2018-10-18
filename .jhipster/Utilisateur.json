@@ -1,0 +1,46 @@
+{
+    "name": "Utilisateur",
+    "fields": [
+        {
+            "fieldName": "pseudo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "points",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "credit",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "couleur",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "jeu",
+            "otherEntityName": "jeu",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "utilisateur"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "plateau",
+            "otherEntityName": "plateau",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181018084422",
+    "entityTableName": "utilisateur",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

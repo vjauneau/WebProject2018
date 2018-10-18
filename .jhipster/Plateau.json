@@ -1,0 +1,30 @@
+{
+    "name": "Plateau",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valeur",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "utilisateur",
+            "otherEntityName": "utilisateur",
+            "otherEntityRelationshipName": "plateau"
+        }
+    ],
+    "changelogDate": "20181018084423",
+    "entityTableName": "plateau",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

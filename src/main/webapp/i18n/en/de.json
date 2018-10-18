@@ -1,0 +1,23 @@
+
+{
+    "perudoOnlineApp": {
+        "de" : {
+            "home": {
+                "title": "Des",
+                "createLabel": "Create a new De",
+                "createOrEditLabel": "Create or edit a De"
+            },
+            "created": "A new De is created with identifier {{ param }}",
+            "updated": "A De is updated with identifier {{ param }}",
+            "deleted": "A De is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete De {{ id }}?"
+            },
+            "detail": {
+                "title": "De"
+            },
+            "valeur": "Valeur",
+            "jeu": "Jeu"
+        }
+    }
+}

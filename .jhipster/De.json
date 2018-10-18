@@ -1,0 +1,26 @@
+{
+    "name": "De",
+    "fields": [
+        {
+            "fieldName": "valeur",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "jeu",
+            "otherEntityName": "jeu",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181018084425",
+    "entityTableName": "de",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

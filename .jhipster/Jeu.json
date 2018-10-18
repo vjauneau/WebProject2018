@@ -1,0 +1,28 @@
+{
+    "name": "Jeu",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "de",
+            "otherEntityName": "de",
+            "otherEntityRelationshipName": "jeu"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "utilisateur",
+            "otherEntityName": "utilisateur",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "jeu"
+        }
+    ],
+    "changelogDate": "20181018084424",
+    "entityTableName": "jeu",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
