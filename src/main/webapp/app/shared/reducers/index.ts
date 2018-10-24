@@ -21,13 +21,13 @@ import plateau, {
   PlateauState
 } from 'app/entities/plateau/plateau.reducer';
 // prettier-ignore
-import jeu, {
-  JeuState
-} from 'app/entities/jeu/jeu.reducer';
-// prettier-ignore
 import de, {
   DeState
 } from 'app/entities/de/de.reducer';
+// prettier-ignore
+import jeu, {
+  JeuState
+} from 'app/entities/jeu/jeu.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {

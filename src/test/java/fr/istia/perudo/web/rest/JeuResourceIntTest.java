@@ -39,6 +39,27 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = PerudoOnlineApp.class)
 public class JeuResourceIntTest {
 
+    private static final Integer DEFAULT_NB_DE = 1;
+    private static final Integer UPDATED_NB_DE = 2;
+
+    private static final Integer DEFAULT_VALEUR_1 = 1;
+    private static final Integer UPDATED_VALEUR_1 = 2;
+
+    private static final Integer DEFAULT_VALEUR_2 = 1;
+    private static final Integer UPDATED_VALEUR_2 = 2;
+
+    private static final Integer DEFAULT_VALEUR_3 = 1;
+    private static final Integer UPDATED_VALEUR_3 = 2;
+
+    private static final Integer DEFAULT_VALEUR_4 = 1;
+    private static final Integer UPDATED_VALEUR_4 = 2;
+
+    private static final Integer DEFAULT_VALEUR_5 = 1;
+    private static final Integer UPDATED_VALEUR_5 = 2;
+
+    private static final Integer DEFAULT_VALEUR_6 = 1;
+    private static final Integer UPDATED_VALEUR_6 = 2;
+
     @Autowired
     private JeuRepository jeuRepository;
 
@@ -76,7 +97,14 @@ public class JeuResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Jeu createEntity(EntityManager em) {
-        Jeu jeu = new Jeu();
+        Jeu jeu = new Jeu()
+            .nbDe(DEFAULT_NB_DE)
+            .valeur1(DEFAULT_VALEUR_1)
+            .valeur2(DEFAULT_VALEUR_2)
+            .valeur3(DEFAULT_VALEUR_3)
+            .valeur4(DEFAULT_VALEUR_4)
+            .valeur5(DEFAULT_VALEUR_5)
+            .valeur6(DEFAULT_VALEUR_6);
         return jeu;
     }
 
@@ -100,6 +128,13 @@ public class JeuResourceIntTest {
         List<Jeu> jeuList = jeuRepository.findAll();
         assertThat(jeuList).hasSize(databaseSizeBeforeCreate + 1);
         Jeu testJeu = jeuList.get(jeuList.size() - 1);
+        assertThat(testJeu.getNbDe()).isEqualTo(DEFAULT_NB_DE);
+        assertThat(testJeu.getValeur1()).isEqualTo(DEFAULT_VALEUR_1);
+        assertThat(testJeu.getValeur2()).isEqualTo(DEFAULT_VALEUR_2);
+        assertThat(testJeu.getValeur3()).isEqualTo(DEFAULT_VALEUR_3);
+        assertThat(testJeu.getValeur4()).isEqualTo(DEFAULT_VALEUR_4);
+        assertThat(testJeu.getValeur5()).isEqualTo(DEFAULT_VALEUR_5);
+        assertThat(testJeu.getValeur6()).isEqualTo(DEFAULT_VALEUR_6);
     }
 
     @Test
@@ -131,7 +166,14 @@ public class JeuResourceIntTest {
         restJeuMockMvc.perform(get("/api/jeus?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(jeu.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(jeu.getId().intValue())))
+            .andExpect(jsonPath("$.[*].nbDe").value(hasItem(DEFAULT_NB_DE)))
+            .andExpect(jsonPath("$.[*].valeur1").value(hasItem(DEFAULT_VALEUR_1)))
+            .andExpect(jsonPath("$.[*].valeur2").value(hasItem(DEFAULT_VALEUR_2)))
+            .andExpect(jsonPath("$.[*].valeur3").value(hasItem(DEFAULT_VALEUR_3)))
+            .andExpect(jsonPath("$.[*].valeur4").value(hasItem(DEFAULT_VALEUR_4)))
+            .andExpect(jsonPath("$.[*].valeur5").value(hasItem(DEFAULT_VALEUR_5)))
+            .andExpect(jsonPath("$.[*].valeur6").value(hasItem(DEFAULT_VALEUR_6)));
     }
     
     @Test
@@ -144,7 +186,14 @@ public class JeuResourceIntTest {
         restJeuMockMvc.perform(get("/api/jeus/{id}", jeu.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(jeu.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(jeu.getId().intValue()))
+            .andExpect(jsonPath("$.nbDe").value(DEFAULT_NB_DE))
+            .andExpect(jsonPath("$.valeur1").value(DEFAULT_VALEUR_1))
+            .andExpect(jsonPath("$.valeur2").value(DEFAULT_VALEUR_2))
+            .andExpect(jsonPath("$.valeur3").value(DEFAULT_VALEUR_3))
+            .andExpect(jsonPath("$.valeur4").value(DEFAULT_VALEUR_4))
+            .andExpect(jsonPath("$.valeur5").value(DEFAULT_VALEUR_5))
+            .andExpect(jsonPath("$.valeur6").value(DEFAULT_VALEUR_6));
     }
 
     @Test
@@ -167,6 +216,14 @@ public class JeuResourceIntTest {
         Jeu updatedJeu = jeuRepository.findById(jeu.getId()).get();
         // Disconnect from session so that the updates on updatedJeu are not directly saved in db
         em.detach(updatedJeu);
+        updatedJeu
+            .nbDe(UPDATED_NB_DE)
+            .valeur1(UPDATED_VALEUR_1)
+            .valeur2(UPDATED_VALEUR_2)
+            .valeur3(UPDATED_VALEUR_3)
+            .valeur4(UPDATED_VALEUR_4)
+            .valeur5(UPDATED_VALEUR_5)
+            .valeur6(UPDATED_VALEUR_6);
 
         restJeuMockMvc.perform(put("/api/jeus")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -177,6 +234,13 @@ public class JeuResourceIntTest {
         List<Jeu> jeuList = jeuRepository.findAll();
         assertThat(jeuList).hasSize(databaseSizeBeforeUpdate);
         Jeu testJeu = jeuList.get(jeuList.size() - 1);
+        assertThat(testJeu.getNbDe()).isEqualTo(UPDATED_NB_DE);
+        assertThat(testJeu.getValeur1()).isEqualTo(UPDATED_VALEUR_1);
+        assertThat(testJeu.getValeur2()).isEqualTo(UPDATED_VALEUR_2);
+        assertThat(testJeu.getValeur3()).isEqualTo(UPDATED_VALEUR_3);
+        assertThat(testJeu.getValeur4()).isEqualTo(UPDATED_VALEUR_4);
+        assertThat(testJeu.getValeur5()).isEqualTo(UPDATED_VALEUR_5);
+        assertThat(testJeu.getValeur6()).isEqualTo(UPDATED_VALEUR_6);
     }
 
     @Test

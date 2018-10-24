@@ -517,10 +517,10 @@
                     <changeLogFile>src/main/resources/config/liquibase/master.xml</changeLogFile>
                     <diffChangeLogFile>src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
                     <driver>org.postgresql.Driver</driver>
-                    <url>jdbc:postgresql://localhost:5432/PerudoOnline</url>
+                    <url>jdbc:postgresql://localhost:5432/Perudo</url>
                     <defaultSchemaName></defaultSchemaName>
-                    <username>PerudoOnline</username>
-                    <password></password>
+                    <username>Perudo</username>
+                    <password>perudo</password>
                     <referenceUrl>hibernate:spring:fr.istia.perudo.domain?dialect=org.hibernate.dialect.PostgreSQL82Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>

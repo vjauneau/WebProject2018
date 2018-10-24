@@ -12,6 +12,14 @@ entity Plateau {
 }
 
 entity Jeu {
+
+	NbDe Integer,
+	Valeur1 Integer,
+	Valeur2 Integer,
+	Valeur3 Integer,
+	Valeur4 Integer,
+	Valeur5 Integer,
+	Valeur6 Integer,
 		
 }
 

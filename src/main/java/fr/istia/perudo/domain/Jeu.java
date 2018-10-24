@@ -23,6 +23,27 @@ public class Jeu implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @Column(name = "nb_de")
+    private Integer nbDe;
+
+    @Column(name = "valeur_1")
+    private Integer valeur1;
+
+    @Column(name = "valeur_2")
+    private Integer valeur2;
+
+    @Column(name = "valeur_3")
+    private Integer valeur3;
+
+    @Column(name = "valeur_4")
+    private Integer valeur4;
+
+    @Column(name = "valeur_5")
+    private Integer valeur5;
+
+    @Column(name = "valeur_6")
+    private Integer valeur6;
+
     @OneToMany(mappedBy = "jeu")
     private Set<De> des = new HashSet<>();
     @OneToOne(mappedBy = "jeu")
@@ -36,6 +57,97 @@ public class Jeu implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getNbDe() {
+        return nbDe;
+    }
+
+    public Jeu nbDe(Integer nbDe) {
+        this.nbDe = nbDe;
+        return this;
+    }
+
+    public void setNbDe(Integer nbDe) {
+        this.nbDe = nbDe;
+    }
+
+    public Integer getValeur1() {
+        return valeur1;
+    }
+
+    public Jeu valeur1(Integer valeur1) {
+        this.valeur1 = valeur1;
+        return this;
+    }
+
+    public void setValeur1(Integer valeur1) {
+        this.valeur1 = valeur1;
+    }
+
+    public Integer getValeur2() {
+        return valeur2;
+    }
+
+    public Jeu valeur2(Integer valeur2) {
+        this.valeur2 = valeur2;
+        return this;
+    }
+
+    public void setValeur2(Integer valeur2) {
+        this.valeur2 = valeur2;
+    }
+
+    public Integer getValeur3() {
+        return valeur3;
+    }
+
+    public Jeu valeur3(Integer valeur3) {
+        this.valeur3 = valeur3;
+        return this;
+    }
+
+    public void setValeur3(Integer valeur3) {
+        this.valeur3 = valeur3;
+    }
+
+    public Integer getValeur4() {
+        return valeur4;
+    }
+
+    public Jeu valeur4(Integer valeur4) {
+        this.valeur4 = valeur4;
+        return this;
+    }
+
+    public void setValeur4(Integer valeur4) {
+        this.valeur4 = valeur4;
+    }
+
+    public Integer getValeur5() {
+        return valeur5;
+    }
+
+    public Jeu valeur5(Integer valeur5) {
+        this.valeur5 = valeur5;
+        return this;
+    }
+
+    public void setValeur5(Integer valeur5) {
+        this.valeur5 = valeur5;
+    }
+
+    public Integer getValeur6() {
+        return valeur6;
+    }
+
+    public Jeu valeur6(Integer valeur6) {
+        this.valeur6 = valeur6;
+        return this;
+    }
+
+    public void setValeur6(Integer valeur6) {
+        this.valeur6 = valeur6;
     }
 
     public Set<De> getDes() {
@@ -101,6 +213,13 @@ public class Jeu implements Serializable {
     public String toString() {
         return "Jeu{" +
             "id=" + getId() +
+            ", nbDe=" + getNbDe() +
+            ", valeur1=" + getValeur1() +
+            ", valeur2=" + getValeur2() +
+            ", valeur3=" + getValeur3() +
+            ", valeur4=" + getValeur4() +
+            ", valeur5=" + getValeur5() +
+            ", valeur6=" + getValeur6() +
             "}";
     }
 }

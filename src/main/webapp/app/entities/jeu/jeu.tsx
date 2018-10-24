@@ -38,6 +38,27 @@ export class Jeu extends React.Component<IJeuProps> {
                 <th>
                   <Translate contentKey="global.field.id">ID</Translate>
                 </th>
+                <th>
+                  <Translate contentKey="perudoOnlineApp.jeu.nbDe">Nb De</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="perudoOnlineApp.jeu.valeur1">Valeur 1</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="perudoOnlineApp.jeu.valeur2">Valeur 2</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="perudoOnlineApp.jeu.valeur3">Valeur 3</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="perudoOnlineApp.jeu.valeur4">Valeur 4</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="perudoOnlineApp.jeu.valeur5">Valeur 5</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="perudoOnlineApp.jeu.valeur6">Valeur 6</Translate>
+                </th>
                 <th />
               </tr>
             </thead>
@@ -49,6 +70,13 @@ export class Jeu extends React.Component<IJeuProps> {
                       {jeu.id}
                     </Button>
                   </td>
+                  <td>{jeu.nbDe}</td>
+                  <td>{jeu.valeur1}</td>
+                  <td>{jeu.valeur2}</td>
+                  <td>{jeu.valeur3}</td>
+                  <td>{jeu.valeur4}</td>
+                  <td>{jeu.valeur5}</td>
+                  <td>{jeu.valeur6}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${jeu.id}`} color="info" size="sm">

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col, Label } from 'reactstrap';
-import { AvForm, AvGroup, AvInput } from 'availity-reactstrap-validation';
+import { AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
 // tslint:disable-next-line:no-unused-variable
 import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -95,6 +95,48 @@ export class JeuUpdate extends React.Component<IJeuUpdateProps, IJeuUpdateState>
                     <AvInput id="jeu-id" type="text" className="form-control" name="id" required readOnly />
                   </AvGroup>
                 ) : null}
+                <AvGroup>
+                  <Label id="nbDeLabel" for="nbDe">
+                    <Translate contentKey="perudoOnlineApp.jeu.nbDe">Nb De</Translate>
+                  </Label>
+                  <AvField id="jeu-nbDe" type="string" className="form-control" name="nbDe" />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="valeur1Label" for="valeur1">
+                    <Translate contentKey="perudoOnlineApp.jeu.valeur1">Valeur 1</Translate>
+                  </Label>
+                  <AvField id="jeu-valeur1" type="string" className="form-control" name="valeur1" />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="valeur2Label" for="valeur2">
+                    <Translate contentKey="perudoOnlineApp.jeu.valeur2">Valeur 2</Translate>
+                  </Label>
+                  <AvField id="jeu-valeur2" type="string" className="form-control" name="valeur2" />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="valeur3Label" for="valeur3">
+                    <Translate contentKey="perudoOnlineApp.jeu.valeur3">Valeur 3</Translate>
+                  </Label>
+                  <AvField id="jeu-valeur3" type="string" className="form-control" name="valeur3" />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="valeur4Label" for="valeur4">
+                    <Translate contentKey="perudoOnlineApp.jeu.valeur4">Valeur 4</Translate>
+                  </Label>
+                  <AvField id="jeu-valeur4" type="string" className="form-control" name="valeur4" />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="valeur5Label" for="valeur5">
+                    <Translate contentKey="perudoOnlineApp.jeu.valeur5">Valeur 5</Translate>
+                  </Label>
+                  <AvField id="jeu-valeur5" type="string" className="form-control" name="valeur5" />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="valeur6Label" for="valeur6">
+                    <Translate contentKey="perudoOnlineApp.jeu.valeur6">Valeur 6</Translate>
+                  </Label>
+                  <AvField id="jeu-valeur6" type="string" className="form-control" name="valeur6" />
+                </AvGroup>
                 <Button tag={Link} id="cancel-save" to="/entity/jeu" replace color="info">
                   <FontAwesomeIcon icon="arrow-left" />
                   &nbsp;

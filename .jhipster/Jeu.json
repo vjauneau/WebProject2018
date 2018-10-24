@@ -1,6 +1,35 @@
 {
     "name": "Jeu",
-    "fields": [],
+    "fields": [
+        {
+            "fieldName": "nbDe",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "valeur1",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "valeur2",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "valeur3",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "valeur4",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "valeur5",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "valeur6",
+            "fieldType": "Integer"
+        }
+    ],
     "relationships": [
         {
             "relationshipType": "one-to-many",

@@ -21,6 +21,34 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="nb_de" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valeur_1" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valeur_2" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valeur_3" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valeur_4" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valeur_5" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valeur_6" type="integer">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         

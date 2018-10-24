@@ -16,6 +16,13 @@
             "detail": {
                 "title": "Jeu"
             },
+            "nbDe": "Nb De",
+            "valeur1": "Valeur 1",
+            "valeur2": "Valeur 2",
+            "valeur3": "Valeur 3",
+            "valeur4": "Valeur 4",
+            "valeur5": "Valeur 5",
+            "valeur6": "Valeur 6",
             "de": "De",
             "utilisateur": "Utilisateur"
         }
