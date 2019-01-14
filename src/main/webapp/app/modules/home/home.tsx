@@ -2,13 +2,14 @@ import './home.scss';
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
-import { Row, Col, Alert } from 'reactstrap';
-
+import { Button, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Alert } from 'reactstrap';
+import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { IRootState } from 'app/shared/reducers';
-import { getSession } from 'app/shared/reducers/authentication';
+import { getSession, login } from 'app/shared/reducers/authentication';
+import { Translate, translate } from 'react-jhipster';
 
+const logo = require('../../../static/images/logo-perudo.png');
 export interface IHomeProp extends StateProps, DispatchProps {}
 
 export class Home extends React.Component<IHomeProp> {
@@ -16,90 +17,89 @@ export class Home extends React.Component<IHomeProp> {
     this.props.getSession();
   }
 
+  handleSubmit = (event, errors, { username, password, rememberMe }) => {
+    this.props.login(username, password, rememberMe);
+  };
+
   render() {
     const { account } = this.props;
     return (
       <Row>
-        <Col md="9">
+        <Col md="7">
           <h2>
-            <Translate contentKey="home.title">Welcome, Java Hipster!</Translate>
+            <h2>
+              {' '}
+              <img className="logo-img" src={logo} alt="logo" width={'10%'} /> Bienvenue sur Perudo Online
+            </h2>
           </h2>
-          <p className="lead">
-            <Translate contentKey="home.subtitle">This is your homepage</Translate>
+          <p>
+            <p>Perudo Online est une application gratuite afin de jouer au Perudo.</p>
           </p>
           {account && account.login ? (
             <div>
               <Alert color="success">
-                <Translate contentKey="home.logged.message" interpolate={{ username: account.login }}>
-                  You are logged in as user {account.login}.
-                </Translate>
+                <p>Vous êtes connecté en tant que {account.login}.</p>
               </Alert>
             </div>
           ) : (
-            <div>
-              <Alert color="warning">
-                <Translate contentKey="global.messages.info.authenticated.prefix">If you want to </Translate>
-                <Link to="/login" className="alert-link">
-                  <Translate contentKey="global.messages.info.authenticated.link"> sign in</Translate>
-                </Link>
-                <Translate contentKey="global.messages.info.authenticated.suffix">
-                  , you can try the default accounts:
-                  <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;)
-                  <br />- User (login=&quot;user&quot; and password=&quot;user&quot;).
-                </Translate>
-              </Alert>
-
-              <Alert color="warning">
-                <Translate contentKey="global.messages.info.register.noaccount">You do not have an account yet?</Translate>
-                &nbsp;
-                <Link to="/register" className="alert-link">
-                  <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
-                </Link>
-              </Alert>
-            </div>
+            ''
           )}
-          <p>
-            <Translate contentKey="home.question">If you have any question on JHipster:</Translate>
-          </p>
-
-          <ul>
-            <li>
-              <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">
-                <Translate contentKey="home.link.homepage">JHipster homepage</Translate>
-              </a>
-            </li>
-            <li>
-              <a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">
-                <Translate contentKey="home.link.stackoverflow">JHipster on Stack Overflow</Translate>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer">
-                <Translate contentKey="home.link.bugtracker">JHipster bug tracker</Translate>
-              </a>
-            </li>
-            <li>
-              <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-                <Translate contentKey="home.link.chat">JHipster public chat room</Translate>
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/java_hipster" target="_blank" rel="noopener noreferrer">
-                <Translate contentKey="home.link.follow">follow @java_hipster on Twitter</Translate>
-              </a>
-            </li>
-          </ul>
-
-          <p>
-            <Translate contentKey="home.like">If you like JHipster, do not forget to give us a star on</Translate>{' '}
-            <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-              Github
-            </a>
-            !
-          </p>
         </Col>
-        <Col md="3" className="pad">
-          <span className="hipster rounded" />
+        <Col md="5" className="pad">
+          {account && !account.login ? (
+            <AvForm onSubmit={this.handleSubmit}>
+              <ModalHeader id="login-title">
+                <Translate contentKey="login.title">Sign in</Translate>
+              </ModalHeader>
+              <ModalBody>
+                <Row>
+                  <Col md="12">
+                    {/* {loginError ? (
+                  <Alert color="danger">
+                    <Translate contentKey="login.messages.error.authentication">
+                      <strong>Failed to sign in!</strong> Please check your credentials and try again.
+                    </Translate>
+                  </Alert>
+                ) : null} */}
+                  </Col>
+                  <Col md="12">
+                    <AvField
+                      name="username"
+                      label={translate('global.form.username')}
+                      placeholder={translate('global.form.username.placeholder')}
+                      required
+                      errorMessage="Username cannot be empty!"
+                      autoFocus
+                    />
+                    <AvField
+                      name="password"
+                      type="password"
+                      label={translate('login.form.password')}
+                      placeholder={translate('login.form.password.placeholder')}
+                      required
+                      errorMessage="Password cannot be empty!"
+                    />
+                    <AvGroup check inline>
+                      <Label className="form-check-label">
+                        <AvInput type="checkbox" name="rememberMe" /> <Translate contentKey="login.form.rememberme">Remember me</Translate>
+                      </Label>
+                    </AvGroup>
+                  </Col>
+                </Row>
+                <div className="mt-1">&nbsp;</div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="secondary" tabIndex="1">
+                  <Translate contentKey="entity.action.cancel">Cancel</Translate>
+                </Button>{' '}
+                <Button color="primary" type="submit">
+                  <Translate contentKey="login.form.button">Sign in</Translate>
+                </Button>
+              </ModalFooter>
+            </AvForm>
+          ) : (
+            ''
+          )}
         </Col>
       </Row>
     );
@@ -108,10 +108,11 @@ export class Home extends React.Component<IHomeProp> {
 
 const mapStateToProps = storeState => ({
   account: storeState.authentication.account,
-  isAuthenticated: storeState.authentication.isAuthenticated
+  isAuthenticated: storeState.authentication.isAuthenticated,
+  loginError: storeState.authentication.loginError
 });
 
-const mapDispatchToProps = { getSession };
+const mapDispatchToProps = { getSession, login };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
