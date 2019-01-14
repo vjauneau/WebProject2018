@@ -8,7 +8,7 @@ import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validatio
 import { IRootState } from 'app/shared/reducers';
 import { getSession, login } from 'app/shared/reducers/authentication';
 import { Translate, translate } from 'react-jhipster';
-
+import { CardGame } from './Component/Card_game';
 const logo = require('../../../static/images/logo-perudo.png');
 export interface IHomeProp extends StateProps, DispatchProps {}
 
@@ -98,7 +98,7 @@ export class Home extends React.Component<IHomeProp> {
               </ModalFooter>
             </AvForm>
           ) : (
-            ''
+            <CardGame idTable={1} actualPlayer={0} nbPlayer={3} />
           )}
         </Col>
       </Row>
