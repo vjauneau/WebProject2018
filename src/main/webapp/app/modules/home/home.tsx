@@ -9,32 +9,59 @@ import { IRootState } from 'app/shared/reducers';
 import { getSession, login } from 'app/shared/reducers/authentication';
 import { Translate, translate } from 'react-jhipster';
 import { CardGame } from './Component/Card_game';
+import { getEntities, isGameJoinable, JoinGame } from 'app/entities/game/game.reducer';
 const logo = require('../../../static/images/logo-perudo.png');
 export interface IHomeProp extends StateProps, DispatchProps {}
 
 export class Home extends React.Component<IHomeProp> {
+  state = {
+    gamePreJoin: {
+      id: 0,
+      joinable: false
+    }
+  };
+
+  constructor(props) {
+    super(props);
+    this.handlePrejoin = this.handlePrejoin.bind(this);
+  }
+
   componentDidMount() {
     this.props.getSession();
+    if (this.props.account && this.props.account.login) this.props.getEntities();
+  }
+  componentWillReceiveProps(newProps) {
+    if (this.props.account.login !== newProps.account.login) {
+      if (newProps.account && newProps.account.login) this.props.getEntities();
+    }
+    if (newProps.joinable !== undefined) {
+      if (this.props.joinable !== newProps.joinable) {
+        console.log('plop');
+        this.setState({ gameJoinable: { id: this.state.gamePreJoin.id, joinable: newProps.joinable } });
+      }
+    }
   }
 
   handleSubmit = (event, errors, { username, password, rememberMe }) => {
     this.props.login(username, password, rememberMe);
   };
 
+  handlePrejoin(idTable) {
+    this.state.gamePreJoin.id = idTable;
+    this.props.isGameJoinable(idTable);
+  }
+
   render() {
-    const { account } = this.props;
+    const { account, gameList, joinable } = this.props;
     return (
       <Row>
         <Col md="7">
           <h2>
-            <h2>
-              {' '}
-              <img className="logo-img" src={logo} alt="logo" width={'10%'} /> Bienvenue sur Perudo Online
-            </h2>
+            <img className="logo-img" src={logo} alt="logo" width={'10%'} /> Bienvenue sur Perudo Online
           </h2>
-          <p>
-            <p>Perudo Online est une application gratuite afin de jouer au Perudo.</p>
-          </p>
+
+          <p>Perudo Online est une application gratuite permettant de jouer au Perudo.</p>
+
           {account && account.login ? (
             <div>
               <Alert color="success">
@@ -98,7 +125,20 @@ export class Home extends React.Component<IHomeProp> {
               </ModalFooter>
             </AvForm>
           ) : (
-            <CardGame idTable={1} actualPlayer={0} nbPlayer={3} />
+            gameList.map(game => {
+              return (
+                <div key={game.id}>
+                  <CardGame
+                    idTable={game.id}
+                    actualPlayer={game.actualPlayer}
+                    nbPlayer={game.nbPlayer}
+                    prejoin={this.handlePrejoin}
+                    joinable={this.state.gameJoinable}
+                    joinGame={JoinGame}
+                  />
+                </div>
+              );
+            })
           )}
         </Col>
       </Row>
@@ -109,10 +149,12 @@ export class Home extends React.Component<IHomeProp> {
 const mapStateToProps = storeState => ({
   account: storeState.authentication.account,
   isAuthenticated: storeState.authentication.isAuthenticated,
-  loginError: storeState.authentication.loginError
+  loginError: storeState.authentication.loginError,
+  gameList: storeState.game.entities,
+  joinable: storeState.game.joinable
 });
 
-const mapDispatchToProps = { getSession, login };
+const mapDispatchToProps = { getSession, login, getEntities, isGameJoinable, JoinGame };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;

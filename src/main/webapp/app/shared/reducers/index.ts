@@ -28,6 +28,8 @@ import de, {
 import jeu, {
   JeuState
 } from 'app/entities/jeu/jeu.reducer';
+
+import game, { GameState } from 'app/entities/game/game.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -45,6 +47,7 @@ export interface IRootState {
   readonly plateau: PlateauState;
   readonly jeu: JeuState;
   readonly de: DeState;
+  readonly game: GameState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -64,6 +67,7 @@ const rootReducer = combineReducers<IRootState>({
   plateau,
   jeu,
   de,
+  game,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar
 });
