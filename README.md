@@ -1,6 +1,33 @@
 # PerudoOnline
 This application was generated using JHipster 5.5.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.5.0](https://www.jhipster.tech/documentation-archive/v5.5.0).
 
+## Mise en route de l'application en Dev
+
+Tout d'abord effectuer un git clone du repository en local sur votre Machine.
+Ouvrir un invite de commande et utiliser
+
+    npm install or yarn install
+    
+Afin d'installer les dépendances nécessaires au projet.
+
+Ouvrir pgAdmin et Créer un utilisateur : 
+    login Perudo
+    password perudo
+Ainsi qu'une base associé
+    Perudo
+
+Démarrer le serveur java, liquibase va générer votre base de données référentielles.
+Dans l'invite de commande démarrer l'application Web : 
+
+    ./mvnw
+    npm start or yarn start
+
+Vous pouvez désormais accéder à l'application via :
+http://localhost:9000 WebSync browser via yarn
+http://localhost:8080 Local 
+
+
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
