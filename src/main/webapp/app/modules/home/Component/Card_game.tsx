@@ -37,6 +37,7 @@ export class CardGame extends React.Component<ICardGameProps> {
   componentWillReceiveProps(newProps) {
     if (newProps.joinable !== undefined) {
       if (newProps.joinable.id === this.props.idTable) {
+        console.log('totable to true');
         this.setState({ toTable: newProps.joinable.joinable });
       }
     }
@@ -46,6 +47,7 @@ export class CardGame extends React.Component<ICardGameProps> {
     const { nbPlayer, idTable, actualPlayer } = this.props;
 
     if (this.state.toTable === true) {
+      console.log('plop');
       this.props.joinGame(idTable);
       return (
         <Redirect

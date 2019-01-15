@@ -8,17 +8,5 @@
     -->
     <changeSet id="20181018084422-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="jeu_id"
-                                 baseTableName="utilisateur"
-                                 constraintName="fk_utilisateur_jeu_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="jeu"/>
-
-        <addForeignKeyConstraint baseColumnNames="plateau_id"
-                                 baseTableName="utilisateur"
-                                 constraintName="fk_utilisateur_plateau_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="plateau"/>
-
     </changeSet>
 </databaseChangeLog>

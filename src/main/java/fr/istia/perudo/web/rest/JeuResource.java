@@ -91,7 +91,6 @@ public class JeuResource {
             log.debug("REST request to get all Jeus where utilisateur is null");
             return StreamSupport
                 .stream(jeuRepository.findAll().spliterator(), false)
-                .filter(jeu -> jeu.getUtilisateur() == null)
                 .collect(Collectors.toList());
         }
         log.debug("REST request to get all Jeus");

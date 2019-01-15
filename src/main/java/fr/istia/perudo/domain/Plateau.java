@@ -29,9 +29,7 @@ public class Plateau implements Serializable {
     @Column(name = "valeur")
     private Integer valeur;
 
-    @OneToMany(mappedBy = "plateau")
-    private Set<Utilisateur> utilisateurs = new HashSet<>();
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+        // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
     }
@@ -66,30 +64,7 @@ public class Plateau implements Serializable {
         this.valeur = valeur;
     }
 
-    public Set<Utilisateur> getUtilisateurs() {
-        return utilisateurs;
-    }
-
-    public Plateau utilisateurs(Set<Utilisateur> utilisateurs) {
-        this.utilisateurs = utilisateurs;
-        return this;
-    }
-
-    public Plateau addUtilisateur(Utilisateur utilisateur) {
-        this.utilisateurs.add(utilisateur);
-        utilisateur.setPlateau(this);
-        return this;
-    }
-
-    public Plateau removeUtilisateur(Utilisateur utilisateur) {
-        this.utilisateurs.remove(utilisateur);
-        utilisateur.setPlateau(null);
-        return this;
-    }
-
-    public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
-        this.utilisateurs = utilisateurs;
-    }
+    
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

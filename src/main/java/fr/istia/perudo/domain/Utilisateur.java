@@ -33,14 +33,6 @@ public class Utilisateur implements Serializable {
     @Column(name = "couleur")
     private String couleur;
 
-    @OneToOne    
-    @JoinColumn(unique = true)
-    private Jeu jeu;
-
-    @ManyToOne
-    @JsonIgnoreProperties("utilisateurs")
-    private Plateau plateau;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -102,31 +94,7 @@ public class Utilisateur implements Serializable {
         this.couleur = couleur;
     }
 
-    public Jeu getJeu() {
-        return jeu;
-    }
-
-    public Utilisateur jeu(Jeu jeu) {
-        this.jeu = jeu;
-        return this;
-    }
-
-    public void setJeu(Jeu jeu) {
-        this.jeu = jeu;
-    }
-
-    public Plateau getPlateau() {
-        return plateau;
-    }
-
-    public Utilisateur plateau(Plateau plateau) {
-        this.plateau = plateau;
-        return this;
-    }
-
-    public void setPlateau(Plateau plateau) {
-        this.plateau = plateau;
-    }
+    
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

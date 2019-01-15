@@ -13,16 +13,12 @@
     <property name="floatType" value="float4" dbms="postgresql, h2"/>
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
-    <changeSet id="20181018084425-2" author="jhipster">
+    <changeSet id="20190115-2" author="vjauneau">
  			<loadData encoding="UTF-8"
-                  file="config/liquibase/Jeu.csv"
+                  file="config/liquibase/Game.csv"
                   separator=";"
-                  tableName="jeu"/>
-                  
-            <loadData encoding="UTF-8"
-                  file="config/liquibase/Utilisateur.csv"
-                  separator=";"
-                  tableName="utilisateur"/>
+                  tableName="game"/>
+
         
         
     </changeSet>

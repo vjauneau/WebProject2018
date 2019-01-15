@@ -36,7 +36,7 @@ public class JeuService {
 		int id = random.nextInt(count);
 		List<Long> idfirst = this.jeuRepository.getidforfirstinlist(new PageRequest(0,1), nbDe);
 		id += idfirst.get(0);
-		Jeu result = this.jeuRepository.findOneRandom(nbDe,id);
+		Jeu result = this.jeuRepository.findOneRandom(nbDe,(long)id);
 		
 		return result;
 		

@@ -5,6 +5,7 @@ import { cleanEntity } from 'app/shared/util/entity-utils';
 import { REQUEST, SUCCESS, FAILURE } from 'app/shared/reducers/action-type.util';
 
 import { IGame, defaultValue } from 'app/shared/model/game.model';
+import { any } from 'prop-types';
 
 export const ACTION_TYPES = {
   FETCH_GAME_LIST: 'game/FETCH_GAME_LIST',
@@ -14,6 +15,7 @@ export const ACTION_TYPES = {
   DELETE_GAME: 'game/DELETE_GAME',
   PREJOIN_GAME: 'game/PREJOIN_GAME',
   JOIN_GAME: 'game/JOIN_GAME',
+  STATE_GAME: 'game/STATE_GAME',
   RESET: 'game/RESET'
 };
 
@@ -22,6 +24,7 @@ const initialState = {
   errorMessage: null,
   entities: [] as ReadonlyArray<IGame>,
   entity: defaultValue,
+  stateGame: any,
   updating: false,
   updateSuccess: false,
   joinable: false
@@ -99,6 +102,11 @@ export default (state: GameState = initialState, action): GameState => {
         ...state,
         joinable: false
       };
+    case SUCCESS(ACTION_TYPES.STATE_GAME):
+      return {
+        ...state,
+        stateGame: action.payload.data
+      };
     case ACTION_TYPES.RESET:
       return {
         ...initialState
@@ -131,6 +139,14 @@ export const getEntity: ICrudGetAction<IGame> = id => {
   return {
     type: ACTION_TYPES.FETCH_GAME,
     payload: axios.get<IGame>(requestUrl)
+  };
+};
+
+export const getGameState: ICrudGetAction<any> = id => {
+  const requestUrl = `${apiUrl}/state?id=` + id;
+  return {
+    type: ACTION_TYPES.STATE_GAME,
+    payload: axios.get<any>(requestUrl)
   };
 };
 

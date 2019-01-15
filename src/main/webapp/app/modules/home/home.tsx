@@ -52,6 +52,7 @@ export class Home extends React.Component<IHomeProp> {
   }
 
   render() {
+    console.log(this.state);
     const { account, gameList, joinable } = this.props;
     return (
       <Row>

@@ -30,6 +30,9 @@ public class Game implements Serializable {
 
 	@Column(name = "nbPlayer")
     private Integer nbPlayer;
+	
+	@Column(name = "state")
+    private Integer state;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -55,6 +58,14 @@ public class Game implements Serializable {
 
 	public void setNbPlayer(Integer nbPlayer) {
 		this.nbPlayer = nbPlayer;
+	}
+	
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
 	}
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

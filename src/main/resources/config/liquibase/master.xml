@@ -17,4 +17,5 @@
     <include file="config/liquibase/changelog/20181024_import_donnees_referentiel2.xml" relativeToChangelogFile="false"/>
     
         <include file="config/liquibase/changelog/20190115_add_user_jeu_table.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20190115_import_donnees_referentiel3.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

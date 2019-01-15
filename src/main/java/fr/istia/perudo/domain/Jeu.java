@@ -44,12 +44,6 @@ public class Jeu implements Serializable {
     @Column(name = "valeur_6")
     private Integer valeur6;
 
-    @OneToMany(mappedBy = "jeu")
-    private Set<De> des = new HashSet<>();
-    @OneToOne(mappedBy = "jeu")
-    @JsonIgnore
-    private Utilisateur utilisateur;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -150,43 +144,8 @@ public class Jeu implements Serializable {
         this.valeur6 = valeur6;
     }
 
-    public Set<De> getDes() {
-        return des;
-    }
+   
 
-    public Jeu des(Set<De> des) {
-        this.des = des;
-        return this;
-    }
-
-    public Jeu addDe(De de) {
-        this.des.add(de);
-        de.setJeu(this);
-        return this;
-    }
-
-    public Jeu removeDe(De de) {
-        this.des.remove(de);
-        de.setJeu(null);
-        return this;
-    }
-
-    public void setDes(Set<De> des) {
-        this.des = des;
-    }
-
-    public Utilisateur getUtilisateur() {
-        return utilisateur;
-    }
-
-    public Jeu utilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
-        return this;
-    }
-
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

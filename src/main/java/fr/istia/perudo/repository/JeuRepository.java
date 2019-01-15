@@ -23,9 +23,12 @@ public interface JeuRepository extends JpaRepository<Jeu, Long> {
 
 	
 	@Query("select j from Jeu j where j.nbDe = :nbDe and id = :id")
-	Jeu findOneRandom(@Param("nbDe")int nbDe,@Param("id") int id);
+	Jeu findOneRandom(@Param("nbDe")int nbDe,@Param("id") long id);
 
 	
 	@Query("select j.id from Jeu j where j.nbDe = :nbDe")
-	List<Long> getidforfirstinlist(Pageable pageable, int nbDe);
+	List<Long> getidforfirstinlist(Pageable page,@Param("nbDe") int nbDe);
+	
+	@Query("select j From UserJeuGame ujg left join ujg.jeu j left join ujg.user u where u.pseudo = :pseudo ")
+	Jeu findByUser(@Param("pseudo") String pseudo);
 }

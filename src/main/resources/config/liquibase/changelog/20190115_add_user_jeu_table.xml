@@ -24,6 +24,9 @@
             <column name="nb_player" type="bigint">
                 <constraints nullable="false"/>
             </column>
+            <column name="state" type="bigint">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
    </changeSet>
     <changeSet id="201901150855" author="vjauneau">
