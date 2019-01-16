@@ -3,6 +3,9 @@ This application was generated using JHipster 5.5.0, you can find documentation 
 
 ## Mise en route de l'application en Dev
 
+Installer node.js
+Installer Jhipster https://www.jhipster.tech/installation/
+
 Tout d'abord effectuer un git clone du repository en local sur votre Machine.
 Ouvrir un invite de commande et utiliser
 
