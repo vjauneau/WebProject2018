@@ -13,6 +13,7 @@ export const ACTION_TYPES = {
   CREATE_GAME: 'game/CREATE_GAME',
   UPDATE_GAME: 'game/UPDATE_GAME',
   DELETE_GAME: 'game/DELETE_GAME',
+  WHEREAMI: 'game/WHEREAMI',
   PREJOIN_GAME: 'game/PREJOIN_GAME',
   JOIN_GAME: 'game/JOIN_GAME',
   STATE_GAME: 'game/STATE_GAME',
@@ -25,6 +26,7 @@ const initialState = {
   entities: [] as ReadonlyArray<IGame>,
   entity: defaultValue,
   stateGame: any,
+  IdGame: any,
   updating: false,
   updateSuccess: false,
   joinable: false
@@ -102,6 +104,11 @@ export default (state: GameState = initialState, action): GameState => {
         ...state,
         joinable: false
       };
+    case SUCCESS(ACTION_TYPES.WHEREAMI):
+      return {
+        ...state,
+        IdGame: action.payload.data
+      };
     case SUCCESS(ACTION_TYPES.STATE_GAME):
       return {
         ...state,
@@ -132,6 +139,11 @@ export const isGameJoinable: ICrudGetAction<Boolean> = id => ({
 export const JoinGame: ICrudPutAction<void> = id => ({
   type: ACTION_TYPES.JOIN_GAME,
   payload: axios.post<void>(`${apiUrl}/join?cacheBuster=${new Date().getTime()}&id=` + id)
+});
+
+export const whereAmI: ICrudGetAction<any> = id => ({
+  type: ACTION_TYPES.WHEREAMI,
+  payload: axios.get<any>(`${apiUrl}/whereAmI`)
 });
 
 export const getEntity: ICrudGetAction<IGame> = id => {

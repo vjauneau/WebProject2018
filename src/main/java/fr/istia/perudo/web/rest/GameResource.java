@@ -143,21 +143,46 @@ public class GameResource {
     @Timed
     public GameDTO GetGameState(@RequestParam(required = true) Long id) {
     	String login = SecurityContextHolder.getContext().getAuthentication().getName();
-    	Optional<Game> game = this.gameRepository.findById(id);
+    	Long gameId = id;
+    	if(id == 0) {
+    		gameId = this.gameRepository.findByUser(login).getId();
+    	}
+    	Utilisateur me = this.utilisateurRepository.findByPseudo(login);
+    	Optional<Game> game = this.gameRepository.findById(gameId);
     	if(game.isPresent()) {
     		GameDTO gDTO = new GameDTO();
     		Game g = game.get();
     		gDTO.setGame(g);
     		List<Utilisateur> users = this.utilisateurRepository.findByGame(g.getId());
+    		System.out.println("___________________________________");
+    		for(Utilisateur u : users) {
+    			System.out.println("utilisateur dans la table :"+u.toString());
+    		}
+    		System.out.println("___________________________________");
     		gDTO.setUser(users);
     		Jeu jeu = this.jeuRepository.findByUser(login);
     		gDTO.setJeu(jeu);
     		
+    		gDTO.setPointsJoueur(me.getPoints());
     		return gDTO;
     	}
     	
     	return null;
     	
+    }
+    
+    /**
+     * GET  /games : get all the games.
+     *
+     * @param filter the filter of the request
+     * @return the ResponseEntity with status 200 (OK) and the list of jeus in body
+     */
+    @GetMapping("/games/whereAmI")
+    @Timed
+    public Long whereAmI() {
+    	String login = SecurityContextHolder.getContext().getAuthentication().getName();
+    	Game game = this.gameRepository.findByUser(login);
+    	return game.getId();
     }
     
 

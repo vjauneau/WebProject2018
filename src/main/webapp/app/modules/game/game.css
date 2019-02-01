@@ -1,0 +1,68 @@
+.inline {
+  display: inline;
+}
+.center {
+  align-content: center;
+  text-align: center;
+}
+.spaced {
+  margin-left: 5%;
+}
+
+.game_corporate {
+  border-style: solid;
+  border-color: #777777;
+}
+
+.vyv_color {
+  color: #fc5b2a;
+}
+
+label {
+  margin-top: 5%;
+  font: bold;
+  font-size: 18px;
+}
+
+.imgDe {
+  width: 10%;
+}
+.AlignCenter {
+  text-align: center;
+}
+.inherit {
+  width: inherit;
+}
+
+.table3player3 {
+  position: absolute;
+  top: 2%;
+  left: 14%;
+}
+.table3player2 {
+  position: absolute;
+  top: 4%;
+  left: 77%;
+}
+
+.table3player1 {
+  position: absolute;
+  top: 90%;
+  left: 45%;
+}
+.table3player1info {
+  position: absolute;
+  top: 75%;
+  left: 55%;
+}
+
+.table3player2info {
+  position: absolute;
+  top: 20%;
+  left: 85%;
+}
+.table3player3info {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+}

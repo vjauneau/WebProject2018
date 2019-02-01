@@ -12,7 +12,13 @@ public class GameDTO {
 	private Game game;
 	private List<Utilisateur> user;
 	private Jeu jeu;
+	private Integer pointsJoueur;
+	private Integer joueurToPlay;
+	private Integer nbDeParie;
+	private Integer valeurDePari;
 	
+
+
 	public GameDTO() {
 		user = new ArrayList<>();
 	}
@@ -43,6 +49,38 @@ public class GameDTO {
 
 	public void setJeu(Jeu jeu) {
 		this.jeu = jeu;
+	}
+	
+	public Integer getPointsJoueur() {
+		return pointsJoueur;
+	}
+
+	public void setPointsJoueur(Integer pointsJoueur) {
+		this.pointsJoueur = pointsJoueur;
+	}
+
+	public Integer getJoueurToPlay() {
+		return joueurToPlay;
+	}
+
+	public void setJoueurToPlay(Integer joueurToPlay) {
+		this.joueurToPlay = joueurToPlay;
+	}
+
+	public Integer getNbDeParie() {
+		return nbDeParie;
+	}
+
+	public void setNbDeParie(Integer nbDeParie) {
+		this.nbDeParie = nbDeParie;
+	}
+
+	public Integer getValeurDePari() {
+		return valeurDePari;
+	}
+
+	public void setValeurDePari(Integer valeurDePari) {
+		this.valeurDePari = valeurDePari;
 	}
 	
 	
