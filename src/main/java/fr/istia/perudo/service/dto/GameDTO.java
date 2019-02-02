@@ -12,8 +12,9 @@ public class GameDTO {
 	private Game game;
 	private List<Utilisateur> user;
 	private Jeu jeu;
+	private String pseudoJoueur;
 	private Integer pointsJoueur;
-	private Integer joueurToPlay;
+	private String joueurToPlay;
 	private Integer nbDeParie;
 	private Integer valeurDePari;
 	
@@ -59,11 +60,11 @@ public class GameDTO {
 		this.pointsJoueur = pointsJoueur;
 	}
 
-	public Integer getJoueurToPlay() {
+	public String getJoueurToPlay() {
 		return joueurToPlay;
 	}
 
-	public void setJoueurToPlay(Integer joueurToPlay) {
+	public void setJoueurToPlay(String joueurToPlay) {
 		this.joueurToPlay = joueurToPlay;
 	}
 
@@ -81,6 +82,14 @@ public class GameDTO {
 
 	public void setValeurDePari(Integer valeurDePari) {
 		this.valeurDePari = valeurDePari;
+	}
+
+	public String getPseudoJoueur() {
+		return pseudoJoueur;
+	}
+
+	public void setPseudoJoueur(String pseudoJoueur) {
+		this.pseudoJoueur = pseudoJoueur;
 	}
 	
 	

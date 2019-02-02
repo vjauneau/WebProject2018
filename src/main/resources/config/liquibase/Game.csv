@@ -1,5 +1,5 @@
-id;actual_player;nb_player;state
-1;0;3;0
-2;0;2;0
-3;0;3;0
-4;0;4;0
+id;actual_player;nb_player;state;nb_de_pari;valeur_de_pari;joueur_to_play
+1;0;3;0;0;0;
+2;0;3;0;0;0;
+3;0;3;0;0;0;
+4;0;3;0;0;0;

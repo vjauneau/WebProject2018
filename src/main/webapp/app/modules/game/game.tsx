@@ -7,7 +7,7 @@ import { Translate, ICrudGetAllAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
-import { getGameState, whereAmI } from '../../entities/game/game.reducer';
+import { getGameState, whereAmI, setPari } from '../../entities/game/game.reducer';
 import { IDe } from 'app/shared/model/de.model';
 import { Container, Row, Col, Button, Table } from 'reactstrap';
 // tslint:disable-next-line:no-unused-variable
@@ -30,7 +30,6 @@ export class Game extends React.Component<IGameProps> {
     this.handleclick = this.handleclick.bind(this);
   }
   componentDidMount() {
-    console.log(this.props);
     if (this.state.IdTable === 0) {
       if (this.props.location.state) this.state.IdTable = this.props.location.state.idGame;
       this.props.getGameState(this.state.IdTable);
@@ -43,18 +42,11 @@ export class Game extends React.Component<IGameProps> {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps);
-    if (newProps.gameState !== this.props.gameState) {
-      this.state.IdTable = newProps.gameState.game.id;
-      this.state.main.push(newProps.gameState.jeu.valeur1);
-      this.state.main.push(newProps.gameState.jeu.valeur2);
-      this.state.main.push(newProps.gameState.jeu.valeur3);
-      this.state.main.push(newProps.gameState.jeu.valeur4);
-      this.state.main.push(newProps.gameState.jeu.valeur5);
-      this.state.main.push(newProps.gameState.jeu.valeur6);
-      this.forceUpdate();
+    if (newProps.game) {
+      if (newProps.game.id !== this.state.IdTable) {
+        this.state.IdTable = newProps.game.id;
+      }
     }
-
     if (newProps.idGame !== this.props.idGame) {
       this.state.IdTable = newProps.idGame;
       this.props.getGameState(this.state.IdTable);
@@ -63,12 +55,21 @@ export class Game extends React.Component<IGameProps> {
 
   render() {
     const { gameState } = this.props;
+    // console.log(gameState);
     return (
       <div>
         <Row>
           <Col md={2} className=" game_corporate">
             {' '}
-            <Controller nbPlayer={3} nbDe={6} />{' '}
+            <Controller
+              nbPlayer={3}
+              nbDe={6}
+              idGame={this.state.IdTable}
+              game={gameState.game}
+              setPari={this.props.setPari}
+              pseudoJoueur={this.props.gameState.pseudoJoueur}
+              joueur2p={this.props.gameState.joueurToPlay}
+            />{' '}
           </Col>
           <Col md={7} className="">
             <Col md={12} className="game_corporate">
@@ -95,7 +96,8 @@ const mapStateToProps = ({ game }: IRootState) => ({
 
 const mapDispatchToProps = {
   getGameState,
-  whereAmI
+  whereAmI,
+  setPari
 };
 
 type StateProps = ReturnType<typeof mapStateToProps>;

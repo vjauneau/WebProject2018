@@ -36,7 +36,6 @@ export class Home extends React.Component<IHomeProp> {
     }
     if (newProps.joinable !== undefined) {
       if (this.props.joinable !== newProps.joinable) {
-        console.log('plop');
         this.setState({ gameJoinable: { id: this.state.gamePreJoin.id, joinable: newProps.joinable } });
       }
     }
@@ -52,7 +51,6 @@ export class Home extends React.Component<IHomeProp> {
   }
 
   render() {
-    console.log(this.state);
     const { account, gameList, joinable } = this.props;
     return (
       <Row>

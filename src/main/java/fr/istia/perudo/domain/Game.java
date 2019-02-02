@@ -33,8 +33,47 @@ public class Game implements Serializable {
 	
 	@Column(name = "state")
     private Integer state;
+	
+	@Column(name = "nbDePari")
+    private Integer nbDePari;
+	
+	@Column(name = "ValeurDePari")
+    private Integer ValeurDePari;
+	
+	@Column(name = "JoueurToPlay")
+	private String JoueurToPlay;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public String getJoueurToPlay() {
+		return JoueurToPlay;
+	}
+
+
+
+	public void setJoueurToPlay(String joueurToPlay) {
+		JoueurToPlay = joueurToPlay;
+	}
+
+
+
+	public Integer getNbDePari() {
+		return nbDePari;
+	}
+    
+    
+
+	public void setNbDePari(Integer nbDePari) {
+		this.nbDePari = nbDePari;
+	}
+
+	public Integer getValeurDePari() {
+		return ValeurDePari;
+	}
+
+	public void setValeurDePari(Integer valeurDePari) {
+		ValeurDePari = valeurDePari;
+	}
+
+	// jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
     }

@@ -12,7 +12,9 @@ import { IRootState } from 'app/shared/reducers';
 import { Divider, Checkbox, Button } from '@material-ui/core';
 
 import tablewaiting from './imgs/table3waiting.png';
-export interface IPlatalProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
+export interface IPlatalProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {
+  users: any;
+}
 
 export class Platal extends React.Component<IPlatalProps> {
   state = {
@@ -33,7 +35,6 @@ export class Platal extends React.Component<IPlatalProps> {
   }
 
   render() {
-    console.log(this.props);
     const {} = this.props;
     return (
       <div className="inherit">

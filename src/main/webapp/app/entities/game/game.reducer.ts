@@ -17,7 +17,8 @@ export const ACTION_TYPES = {
   PREJOIN_GAME: 'game/PREJOIN_GAME',
   JOIN_GAME: 'game/JOIN_GAME',
   STATE_GAME: 'game/STATE_GAME',
-  RESET: 'game/RESET'
+  RESET: 'game/RESET',
+  SET_PARI: 'game/SET_PARI'
 };
 
 const initialState = {
@@ -139,6 +140,11 @@ export const isGameJoinable: ICrudGetAction<Boolean> = id => ({
 export const JoinGame: ICrudPutAction<void> = id => ({
   type: ACTION_TYPES.JOIN_GAME,
   payload: axios.post<void>(`${apiUrl}/join?cacheBuster=${new Date().getTime()}&id=` + id)
+});
+
+export const setPari: ICrudPutAction<any> = (id, nbDe, valeurDe) => ({
+  type: ACTION_TYPES.SET_PARI,
+  payload: axios.post<void>(`${apiUrl}/setPari?id=` + id + `&nbDe=` + nbDe + `&ValeurDe=` + valeurDe)
 });
 
 export const whereAmI: ICrudGetAction<any> = id => ({

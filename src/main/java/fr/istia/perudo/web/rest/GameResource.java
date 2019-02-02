@@ -23,6 +23,7 @@ import fr.istia.perudo.repository.GameRepository;
 import fr.istia.perudo.repository.JeuRepository;
 import fr.istia.perudo.repository.UserJeuGameRepository;
 import fr.istia.perudo.repository.UtilisateurRepository;
+import fr.istia.perudo.service.GameService;
 import fr.istia.perudo.service.JeuService;
 import fr.istia.perudo.service.dto.GameDTO;
 
@@ -41,16 +42,19 @@ public class GameResource {
    private UtilisateurRepository utilisateurRepository;
    private JeuRepository jeuRepository;
    private UserJeuGameRepository userJeuGameRepository;
+   
+   private GameService gameService;
 
    private JeuService jeuService;
    
     public GameResource(GameRepository GameRepository,UtilisateurRepository UtilisateurRepository,JeuRepository JeuRepository,
-    		UserJeuGameRepository UserJeuGameRepository ) {
+    		UserJeuGameRepository UserJeuGameRepository) {
     	this.gameRepository = GameRepository;
     	this.jeuRepository = JeuRepository;
     	this.utilisateurRepository = UtilisateurRepository;
         this.userJeuGameRepository = UserJeuGameRepository;
         this.jeuService = new JeuService(jeuRepository);
+        this.gameService = new GameService(gameRepository, utilisateurRepository);
     }
     
     public void CreateGame() {
@@ -129,6 +133,8 @@ public class GameResource {
     			this.gameRepository.saveAndFlush(g);
     			
     		}
+    		
+    		this.gameService.updateGameState(g.getId());
     	}
     	
     }
@@ -164,11 +170,39 @@ public class GameResource {
     		gDTO.setJeu(jeu);
     		
     		gDTO.setPointsJoueur(me.getPoints());
+    		gDTO.setPseudoJoueur(me.getPseudo());
+    		gDTO.setJoueurToPlay(g.getJoueurToPlay());
     		return gDTO;
     	}
     	
     	return null;
     	
+    }
+    /**
+     * Post  /games/setPari : 
+     *
+     * @param filter the filter of the request
+     * @return the ResponseEntity with status 200 (OK) and the list of jeus in body
+     */
+    @PostMapping("/games/setPari")
+    @Timed
+    public void SetPari(@RequestParam(required = true) Long id, @RequestParam(required = true) Integer nbDe, @RequestParam(required = true) Integer ValeurDe) {
+    	
+    	
+    	String login = SecurityContextHolder.getContext().getAuthentication().getName();
+    	Long gameId = id;
+    	if(id == 0) {
+    		gameId = this.gameRepository.findByUser(login).getId();
+    	}
+    	Optional<Game> game = this.gameRepository.findById(gameId);
+    	if(game.isPresent()) {
+    		Game g = game.get();
+    		g.setNbDePari(nbDe);
+    		g.setValeurDePari(ValeurDe);
+    		this.gameRepository.saveAndFlush(g);
+    		
+    		this.gameService.UpdatePlayerToPlay(gameId);
+    	}
     }
     
     /**

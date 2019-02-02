@@ -27,6 +27,15 @@
             <column name="state" type="bigint">
                 <constraints nullable="false"/>
             </column>
+            <column name="nb_de_pari" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valeur_de_pari" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="joueur_to_play" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
         </createTable>
    </changeSet>
     <changeSet id="201901150855" author="vjauneau">

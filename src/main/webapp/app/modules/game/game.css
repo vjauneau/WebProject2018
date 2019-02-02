@@ -8,6 +8,9 @@
 .spaced {
   margin-left: 5%;
 }
+.spacedTop {
+  margin-top: 10%;
+}
 
 .game_corporate {
   border-style: solid;
@@ -26,6 +29,10 @@ label {
 
 .imgDe {
   width: 10%;
+}
+
+.imgDePari {
+  width: 30%;
 }
 .AlignCenter {
   text-align: center;

@@ -3,7 +3,9 @@ package fr.istia.perudo.web.rest;
 import com.codahale.metrics.annotation.Timed;
 
 import fr.istia.perudo.domain.User;
+import fr.istia.perudo.domain.Utilisateur;
 import fr.istia.perudo.repository.UserRepository;
+import fr.istia.perudo.repository.UtilisateurRepository;
 import fr.istia.perudo.security.SecurityUtils;
 import fr.istia.perudo.service.MailService;
 import fr.istia.perudo.service.UserService;
@@ -34,14 +36,17 @@ public class AccountResource {
     private final Logger log = LoggerFactory.getLogger(AccountResource.class);
 
     private final UserRepository userRepository;
+    
+    private final UtilisateurRepository utilisateurRepository;
 
     private final UserService userService;
 
     private final MailService mailService;
 
-    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService) {
+    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService, UtilisateurRepository UtilisateurRepository) {
 
         this.userRepository = userRepository;
+        this.utilisateurRepository = UtilisateurRepository;
         this.userService = userService;
         this.mailService = mailService;
     }
@@ -62,6 +67,13 @@ public class AccountResource {
             throw new InvalidPasswordException();
         }
         User user = userService.registerUser(managedUserVM, managedUserVM.getPassword());
+        
+        Utilisateur u = new Utilisateur();
+        u.setCouleur("N/A");
+        u.setCredit(0);
+        u.setPoints(0);
+        u.setPseudo(user.getLogin());
+        this.utilisateurRepository.saveAndFlush(u);
         mailService.sendActivationEmail(user);
     }
 
