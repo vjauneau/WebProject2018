@@ -53,7 +53,6 @@ export class Game extends React.Component<IGameProps> {
 
   render() {
     const { gameState } = this.props;
-    // console.log(gameState);
     return (
       <div>
         <Row>

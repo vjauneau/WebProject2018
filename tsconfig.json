@@ -9,13 +9,14 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
+	"skipLibCheck": true,
     "suppressImplicitAnyIndexErrors": true,
     "outDir": "target/www/app",
     "lib": ["es2015", "es2017", "dom"],
     "typeRoots": [
       "node_modules/@types"
     ],
-    "types": ["webpack-env", "jest"],
+    "types": ["webpack-env"],
     "allowJs": true,
     "checkJs": false,
     "baseUrl": "./",
@@ -27,9 +28,7 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "src/main/webapp/app/typing.d.ts",
-    "src/main/webapp/app/**/*",
-    "src/test/javascript/spec/**/*"
+    "src/main/webapp/app/typing.d.ts"
   ],
   "exclude": [
     "node_modules"

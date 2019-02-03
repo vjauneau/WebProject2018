@@ -2,11 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps, withRouter, Redirect } from 'react-router-dom';
 import { Col, Row, Table } from 'reactstrap';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 // tslint:disable-next-line:no-unused-variable
 import { Translate, ICrudGetAllAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -37,7 +33,6 @@ export class CardGame extends React.Component<ICardGameProps> {
   componentWillReceiveProps(newProps) {
     if (newProps.joinable !== undefined) {
       if (newProps.joinable.id === this.props.idTable) {
-        console.log('totable to true');
         this.setState({ toTable: newProps.joinable.joinable });
       }
     }
@@ -47,7 +42,6 @@ export class CardGame extends React.Component<ICardGameProps> {
     const { nbPlayer, idTable, actualPlayer } = this.props;
 
     if (this.state.toTable === true) {
-      console.log('plop');
       this.props.joinGame(idTable);
       return (
         <Redirect
