@@ -147,6 +147,11 @@ export const setPari: ICrudPutAction<any> = (id, nbDe, valeurDe) => ({
   payload: axios.post<void>(`${apiUrl}/setPari?id=` + id + `&nbDe=` + nbDe + `&ValeurDe=` + valeurDe)
 });
 
+export const callLier: ICrudPutAction<any> = id => ({
+  type: ACTION_TYPES.SET_PARI,
+  payload: axios.post<void>(`${apiUrl}/callLier?id=` + id)
+});
+
 export const whereAmI: ICrudGetAction<any> = id => ({
   type: ACTION_TYPES.WHEREAMI,
   payload: axios.get<any>(`${apiUrl}/whereAmI`)

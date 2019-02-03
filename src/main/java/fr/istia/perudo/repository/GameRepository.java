@@ -1,5 +1,7 @@
 package fr.istia.perudo.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,5 +14,9 @@ public interface GameRepository extends JpaRepository<Game, Long> {
 
 	@Query("select g from UserJeuGame ujg left join ujg.user u left join ujg.game g  where u.pseudo = :login")
 	Game findByUser(@Param("login") String login);
+	
+	
+	@Query("select g from Game g where g.nbPlayer > g.actualPlayer")
+	List<Game> findAllWithPlaces();
 
 }

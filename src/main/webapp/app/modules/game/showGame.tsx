@@ -9,13 +9,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
 import { getGameState } from '../../entities/game/game.reducer';
-import de1 from './imgs/de1.png';
-import de2 from './imgs/de2.png';
-import de3 from './imgs/de3.png';
-import de4 from './imgs/de4.png';
-import de5 from './imgs/de5.png';
-import de6 from './imgs/de6.png';
-import { Divider, Checkbox, Button } from '@material-ui/core';
+// tslint:disable-next-line
+const de1 = require('./imgs/de1.png');
+// tslint:disable-next-line
+const de2 = require('./imgs/de2.png');
+// tslint:disable-next-line
+const de3 = require('./imgs/de3.png');
+// tslint:disable-next-line
+const de4 = require('./imgs/de4.png');
+// tslint:disable-next-line
+const de5 = require('./imgs/de5.png');
+// tslint:disable-next-line
+const de6 = require('./imgs/de6.png');
 export interface IShowGameProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {
   jeu: any;
   ptsJoueur: any;
@@ -61,8 +66,6 @@ export class ShowGame extends React.Component<IShowGameProps> {
 
   render() {
     const { jeu, ptsJoueur } = this.props;
-    console.log(this.props);
-    console.log(this.jeu);
     return (
       <div>
         <Row>

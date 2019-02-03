@@ -9,18 +9,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
 import { getGameState } from '../../entities/game/game.reducer';
-import { IDe } from 'app/shared/model/de.model';
-// tslint:disable-next-line:no-unused-variable
-import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { Divider, Checkbox, Button } from '@material-ui/core';
+// tslint:disable-next-line
 import TextField from '@material-ui/core/TextField';
-import de0 from './imgs/de0.png';
-import de1 from './imgs/de1.png';
-import de2 from './imgs/de2.png';
-import de3 from './imgs/de3.png';
-import de4 from './imgs/de4.png';
-import de5 from './imgs/de5.png';
-import de6 from './imgs/de6.png';
+// tslint:disable-next-line
+const de0 = require('./imgs/de0.png');
+// tslint:disable-next-line
+const de1 = require('./imgs/de1.png');
+// tslint:disable-next-line
+const de2 = require('./imgs/de2.png');
+// tslint:disable-next-line
+const de3 = require('./imgs/de3.png');
+// tslint:disable-next-line
+const de4 = require('./imgs/de4.png');
+// tslint:disable-next-line
+const de5 = require('./imgs/de5.png');
+// tslint:disable-next-line
+const de6 = require('./imgs/de6.png');
 
 export interface IControllerProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {
   nbPlayer: any;
@@ -30,6 +35,7 @@ export interface IControllerProps extends StateProps, DispatchProps, RouteCompon
   joueur2p: any;
   setPari: any;
   idGame: any;
+  callLier: any;
 }
 
 export class Controller extends React.Component<IControllerProps> {
@@ -40,6 +46,7 @@ export class Controller extends React.Component<IControllerProps> {
   constructor(props) {
     super(props);
     this.handleClickParier = this.handleClickParier.bind(this);
+    this.handleClickMenteur = this.handleClickMenteur.bind(this);
   }
 
   handleChange = name => event => {
@@ -77,30 +84,26 @@ export class Controller extends React.Component<IControllerProps> {
   }
 
   handleClickParier(event) {
-    console.log(this.props.game.valeurDePari);
-    console.log(this.state.value);
     const valeur = +this.state.value;
-    console.log(valeur);
+
     if (valeur === this.props.game.valeurDePari) {
-      console.log('meme valeur ');
       if (this.state.de > this.props.game.nbDePari) {
-        console.log('Pari ');
         this.props.setPari(this.props.idGame, this.state.de, this.state.value);
       } else {
-        console.log('Pari impossible');
       }
     } else {
-      console.log('valeur differente ');
       if (valeur > this.props.game.valeurDePari && this.state.de !== 0) {
-        console.log('Pari ');
         this.props.setPari(this.props.idGame, this.state.de, this.state.value);
       } else {
-        console.log('Pari impossible');
       }
     }
   }
 
-  handleClickMenteur(event) {}
+  handleClickMenteur(event) {
+    if (!(this.props.game.nbDePari === 0 && this.props.game.valeurDePari === 0)) {
+      this.props.callLier(this.props.idGame);
+    }
+  }
 
   componentWillReceiveProps(newProps) {}
 

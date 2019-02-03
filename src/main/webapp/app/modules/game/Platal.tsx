@@ -10,8 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
 import { Divider, Checkbox, Button } from '@material-ui/core';
-
-import tablewaiting from './imgs/table3waiting.png';
+// tslint:disable-next-line
+const tablewaiting = require('./imgs/table3waiting.png');
 export interface IPlatalProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {
   users: any;
 }

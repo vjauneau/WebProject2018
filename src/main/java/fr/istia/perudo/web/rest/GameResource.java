@@ -54,7 +54,7 @@ public class GameResource {
     	this.utilisateurRepository = UtilisateurRepository;
         this.userJeuGameRepository = UserJeuGameRepository;
         this.jeuService = new JeuService(jeuRepository);
-        this.gameService = new GameService(gameRepository, utilisateurRepository);
+        this.gameService = new GameService(gameRepository, utilisateurRepository, jeuRepository,userJeuGameRepository,jeuService);
     }
     
     public void CreateGame() {
@@ -71,7 +71,7 @@ public class GameResource {
     @GetMapping("/games")
     @Timed
     public List<Game> GetAllGames() {
-		return this.gameRepository.findAll();
+		return this.gameRepository.findAllWithPlaces();
     	
     }
     
@@ -205,6 +205,27 @@ public class GameResource {
     	}
     }
     
+    /**
+     * Post  /games/callLier : 
+     *
+     * @param filter the filter of the request
+     * @return the ResponseEntity with status 200 (OK) and the list of jeus in body
+     */
+    @PostMapping("/games/callLier")
+    @Timed
+    public void callLier(@RequestParam(required = true) Long id) {
+    	
+    	
+    	String login = SecurityContextHolder.getContext().getAuthentication().getName();
+    	Long gameId = id;
+    	if(id == 0) {
+    		gameId = this.gameRepository.findByUser(login).getId();
+    	}
+    	Optional<Game> game = this.gameRepository.findById(gameId);
+    	if(game.isPresent()) {   		
+    		this.gameService.isLastPlayerALier(gameId);
+    	}
+    }
     /**
      * GET  /games : get all the games.
      *

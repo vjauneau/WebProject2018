@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Alert } from 'reactstrap';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
-import { IRootState } from 'app/shared/reducers';
 import { getSession, login } from 'app/shared/reducers/authentication';
 import { Translate, translate } from 'react-jhipster';
 import { CardGame } from './Component/Card_game';
 import { getEntities, isGameJoinable, JoinGame } from 'app/entities/game/game.reducer';
+// tslint:disable-next-line
 const logo = require('../../../static/images/logo-perudo.png');
 export interface IHomeProp extends StateProps, DispatchProps {}
 
@@ -18,6 +18,10 @@ export class Home extends React.Component<IHomeProp> {
     gamePreJoin: {
       id: 0,
       joinable: false
+    },
+    gameJoinable: {
+      id: null,
+      joinable: null
     }
   };
 
@@ -51,7 +55,7 @@ export class Home extends React.Component<IHomeProp> {
   }
 
   render() {
-    const { account, gameList, joinable } = this.props;
+    const { account, gameList, joinable, isAuthenticated, isAdmin } = this.props;
     return (
       <Row>
         <Col md="7">
@@ -60,6 +64,13 @@ export class Home extends React.Component<IHomeProp> {
           </h2>
 
           <p>Perudo Online est une application gratuite permettant de jouer au Perudo.</p>
+          <h4>Règles</h4>
+
+          <p>Chaque joueur a un jeu de dés que seul lui connait,</p>
+          <p>Chaque joueur enchérit sur le nombre de dés totaux sur la table</p>
+          <p>Si un joueur pensent que le précédent à menti sur les dés de la table</p>
+          <p>il le déclare menteur. Si le joueur a effectivement mentit il prend un point sinon</p>
+          <p>c'est le joueur actuel qui prend un point, l'objectif est de finir avec le moins de points</p>
 
           {account && account.login ? (
             <div>
@@ -124,6 +135,7 @@ export class Home extends React.Component<IHomeProp> {
               </ModalFooter>
             </AvForm>
           ) : (
+            // tslint:disable-next-line
             gameList.map(game => {
               return (
                 <div key={game.id}>
@@ -135,6 +147,7 @@ export class Home extends React.Component<IHomeProp> {
                     joinable={this.state.gameJoinable}
                     joinGame={JoinGame}
                   />
+                  {isAuthenticated && isAdmin && <Button>Add new Game</Button>}
                 </div>
               );
             })
@@ -150,7 +163,8 @@ const mapStateToProps = storeState => ({
   isAuthenticated: storeState.authentication.isAuthenticated,
   loginError: storeState.authentication.loginError,
   gameList: storeState.game.entities,
-  joinable: storeState.game.joinable
+  joinable: storeState.game.joinable,
+  isAdmin: storeState.authentication.isAdmin
 });
 
 const mapDispatchToProps = { getSession, login, getEntities, isGameJoinable, JoinGame };

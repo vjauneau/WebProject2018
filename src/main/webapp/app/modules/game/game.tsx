@@ -7,11 +7,9 @@ import { Translate, ICrudGetAllAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
-import { getGameState, whereAmI, setPari } from '../../entities/game/game.reducer';
-import { IDe } from 'app/shared/model/de.model';
+import { getGameState, whereAmI, setPari, callLier } from '../../entities/game/game.reducer';
 import { Container, Row, Col, Button, Table } from 'reactstrap';
 // tslint:disable-next-line:no-unused-variable
-import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import Controller from './controller';
 import Platal from './Platal';
 import Chat from './chat';
@@ -69,6 +67,7 @@ export class Game extends React.Component<IGameProps> {
               setPari={this.props.setPari}
               pseudoJoueur={this.props.gameState.pseudoJoueur}
               joueur2p={this.props.gameState.joueurToPlay}
+              callLier={this.props.callLier}
             />{' '}
           </Col>
           <Col md={7} className="">
@@ -97,7 +96,8 @@ const mapStateToProps = ({ game }: IRootState) => ({
 const mapDispatchToProps = {
   getGameState,
   whereAmI,
-  setPari
+  setPari,
+  callLier
 };
 
 type StateProps = ReturnType<typeof mapStateToProps>;

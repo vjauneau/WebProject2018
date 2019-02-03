@@ -31,4 +31,7 @@ public interface JeuRepository extends JpaRepository<Jeu, Long> {
 	
 	@Query("select j From UserJeuGame ujg left join ujg.jeu j left join ujg.user u where u.pseudo = :pseudo ")
 	Jeu findByUser(@Param("pseudo") String pseudo);
+
+	@Query("select j from UserJeuGame ujg left join ujg.jeu j left join ujg.game g  where g.id = :id_game")
+	List<Jeu> findByGame(@Param("id_game") Long idGame);
 }
